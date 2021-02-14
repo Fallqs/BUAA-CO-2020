@@ -10,7 +10,7 @@ module pm(input wire[32*7-1:0]I,output wire[32*6-1:0]O,input wire[6*4-1:0]tag,
 	parameter [0:15]su=16'h0230; wire stall; reg[5:0]id[0:3];reg[1:0]line[0:3];
 	wire[2:0]ifup;wire[5:0]alup;wire[2:0]dmp;wire dme;
 	assign {ifup,alup,dmp,dme} = opI;
-	always@(*) {id[0],line[0]} = {ax,(alup&&!dmp)?`alu:dmp?`dmz:`rfm};
+	always@(*) {id[0],line[0]} = {ax,stall?`rfm:(alup&&!dmp)?`alu:dmp?`dmz:`rfm};
 	//Address
 	reg[4:0]falux[0:1]; reg[4:0]faluy[0:1]; reg[4:0]fdmx[0:2]; reg[4:0]fcmpx; reg[4:0]fcmpy; reg[4:0]frfz;
 	always@(*)begin
@@ -34,11 +34,7 @@ module pm(input wire[32*7-1:0]I,output wire[32*6-1:0]O,input wire[6*4-1:0]tag,
 	reg [31:0]rfz[0:1]; reg [31:0]rfw[0:1]; reg [31:0]dmz;
 	reg [31:0]bus[0:1][0:7]; reg[12:0]ops[1:3];
 
-	always@(*)begin
-		{instrp,pcp,rfz[0],rfw[0],bus[`rfm][0],bus[`alu][1],dmz}=I;
-		line[0] = stall?`rfm:(alup&&(!dmp))?`alu:dmp?`dmz:`rfm;
-		id[0] = ax;
-	end
+	always@(*){instrp,pcp,rfz[0],rfw[0],bus[`rfm][0],bus[`alu][1],dmz}=I;
 
 	initial begin {ops[3],ops[2],ops[1]}<={18'b0,18'b0,18'b0};
 			{line[3],line[2],line[1]}<=6'b0; {id[3],id[2],id[1]}<=18'b0; end

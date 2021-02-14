@@ -27,10 +27,10 @@ module dm(input wire[31:0]ax,input wire[31:0]x,output wire[31:0]z,
 		else if(ot)begin $display("@%h: *%h <= %h",out[0], out[1], out[2]);ot<=0;end
 	end
 
-	assign z=	op == `wd? ram[i]:
-				op == `hf? {{16{ram[i][j+15]}},ram[i][j+:16]}:
-				op == `bt? {{24{ram[i][j+ 7]}},ram[i][j+: 8]}:
-				op ==`uhf? {16'b0,ram[i][j+:16]}:
-				op ==`ubt? {24'b0,ram[i][j+: 8]}:
+	assign z=	(op == `wd)? ram[i]:
+				(op == `hf)? {{16{ram[i][j+15]}},ram[i][j+:16]}:
+				(op == `bt)? {{24{ram[i][j+ 7]}},ram[i][j+: 8]}:
+				(op ==`uhf)? {16'b0,ram[i][j+:16]}:
+				(op ==`ubt)? {24'b0,ram[i][j+: 8]}:
 				x;
 endmodule
