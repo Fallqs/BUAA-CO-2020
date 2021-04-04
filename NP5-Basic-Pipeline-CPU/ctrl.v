@@ -31,7 +31,7 @@ module ctrl(input wire[31:0]instr,output wire[12:0]ops,input wire[1:0]b,
 		6'b000011:begin {az,aw,am,ax}<={`inst,6'b0,`pce,`ra};
 		/*jal */		{ifup,alup,dmp,dme}<={`j,6'b0,3'b0,1'b0};   	 end
 		6'b000100:begin {az,aw,am,ax}<={`inst,rs,rt,6'b0};
-		/*beq */		{ifup,alup,dmp,dme}<={(b[`eql])?`b:3'b0,6'b0,3'b0,1'b0};end
+		/*beq */		{ifup,alup,dmp,dme}<={(b[`eql])?`b:3'b0,6'b0,3'b0,1'b0}; end
 		6'b001000:begin {az,aw,am,ax}<={rs,`ext,6'b0,rt};
 		/*addi*/		{ifup,alup,dmp,dme}<={3'b0,`add,3'b0,1'b0};		 end
 		6'b001101:begin {az,aw,am,ax}<={rs,`extu,6'b0,rt};
