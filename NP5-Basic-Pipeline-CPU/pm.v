@@ -58,7 +58,7 @@ module pm(input wire[32*7-1:0]I,output wire[32*6-1:0]O,input wire[6*4-1:0]tag,
 	end
 
 	wire[31:0]alux;wire[31:0]aluy;wire[31:0]cmpx;wire[31:0]cmpy;
-	wire[31:0]dmax;wire[31:0]dmx; wire[31:0]rfx;wire[31:0]ifum;
+	wire[31:0]dmax;wire[31:0]dmx; wire[31:0]rfx; wire[31:0]ifum;
 	assign alux = (falux[1][1:0]==`dft)?rfz[1]:bus[falux[1][0]][falux[1][4:2]];
 	assign aluy = (faluy[1][1:0]==`dft)?rfw[1]:bus[faluy[1][0]][faluy[1][4:2]];
 	assign ifum = ( frfz[1:0]==`dft)?rfz[0]:bus[frfz[0]][frfz[4:2]];
