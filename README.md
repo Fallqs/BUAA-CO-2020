@@ -1,3 +1,11 @@
+## 呕心沥血的 CO-LAB
+
+别骂了别骂了，人家放的是重构的代码所以只有P4跟P5
+
+orz
+
+---
+
 This project attempts to simplify CPU structure with no performance decline. It achieved a 30%+ code decrease formulating a basic MIPS Pipeline CPU compared to the recommended method in BUAA CO Lab 2020 at the very first version.
 
 The main idea is to accomplish everything with address instead of explicitly defined multiplexers. 
