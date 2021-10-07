@@ -6,6 +6,8 @@ orz
 
 已更新guide文件夹，添加了对命名系统、宏定义以及最关键器件 -- Path Manager 的解析，建议下载查看
 
+ps: P5 一定要写内部转发！一定要写！不要像我一样，否则课上暴毙警告！！！
+
 ---
 
 This project attempts to simplify CPU structure with no performance decline. It achieved a 30%+ code decrease formulating a basic MIPS Pipeline CPU compared to the recommended method in BUAA CO Lab 2020 at the very first version.
