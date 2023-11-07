@@ -28,7 +28,7 @@ module pm(input wire[32*7-1:0]I,output wire[32*6-1:0]O,input wire[6*4-1:0]tag,
 
 	assign stall = (falux[0][4:2]<su[{falux[0][1:0],2'b0}+:4]) || (faluy[0][4:2]<su[{faluy[0][1:0],2'b0}+:4])
 				|| (fcmpx[4:2]<su[{fcmpx[1:0],2'b0}+:4]) || (fcmpy[4:2]<su[{fcmpy[1:0],2'b0}+:4])
-				|| (fdmx[0][4:2]<su[{fdmx[0][1:0],2'b0}+:4]) || (frfz[4:2]<su[{frfz[1:0],2'b0}+:4]);
+		|| (fdmx[0][4:2]<su[{fdmx[0][1:0],2'b0}+:4]) || (ifup && frfz[4:2]<su[{frfz[1:0],2'b0}+:4]);
 
 	reg[31:0]instrp; reg[31:0]instr[0:3]; reg[31:0]pcp; reg[31:0]pc[0:3];
 	reg [31:0]rfz[0:1]; reg [31:0]rfw[0:1]; reg [31:0]dmz;
