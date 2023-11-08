@@ -50,7 +50,7 @@ module pm(input wire[32*7-1:0]I,output wire[32*6-1:0]O,input wire[6*4-1:0]tag,
 			{instr[3],instr[2],instr[1],instr[0]} <= {instr[2],instr[1],instr[0],stall?instr[0]:instrp};
 			{   pc[3],   pc[2],   pc[1],   pc[0]} <= {   pc[2],   pc[1],   pc[0],stall?   pc[0]:   pcp};
 			{bus[`rfm][7],bus[`rfm][6],bus[`rfm][5],bus[`rfm][4],bus[`rfm][3],bus[`rfm][2],bus[`rfm][1]} <=
-			{bus[`rfm][6],bus[`rfm][5],bus[`rfm][4],bus[`rfm][3],    dmz     ,bus[`rfm][1],stall?31'b0:bus[`rfm][0]};
+			{bus[`rfm][6],bus[`rfm][5],bus[`rfm][4],bus[`rfm][3],    dmz     ,bus[`rfm][1],stall?32'b0:bus[`rfm][0]};
 			{bus[`alu][7],bus[`alu][6],bus[`alu][5],bus[`alu][4],bus[`alu][3],bus[`alu][2]} <=
 			{bus[`alu][6],bus[`alu][5],bus[`alu][4],bus[`alu][3],bus[`alu][2],bus[`alu][1]};
 			{rfz[1],rfw[1]}<={rfz[0],rfw[0]};
